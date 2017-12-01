@@ -32,7 +32,7 @@ export default class Select extends Component {
     const { label, data } = this.props;
     return [
       label !== '' ? <label key={`select-label-${label}`} htmlFor={`select-${label}`}>{label}</label> : '',
-      <select key={`select-${label || 'select'}`} multiple size="7" onChange={this.changeHandler} value={Array.from(this.selected)}>
+      <select key={`select-${label || 'select'}`} multiple size="7" onClick={this.changeHandler} value={Array.from(this.selected)}>
         {data.map(({ value, item }) => (
           <option key={`${item}-${value}`} value={value}>{item}</option>
         ))}
