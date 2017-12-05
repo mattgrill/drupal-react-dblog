@@ -78,7 +78,7 @@ export default class App extends Component {
             <div className="js-form-item form-item js-form-type-select form-type-select js-form-item-type form-item-type">
               <Select
                 key="select-type"
-                onChange={this.typeFilterHandler}
+                onClick={this.typeFilterHandler}
                 label="Type"
                 data={[
                   { value: 'access+denied', item: 'access denied' },
@@ -94,7 +94,7 @@ export default class App extends Component {
             <div className="js-form-item form-item js-form-type-select form-type-select js-form-item-severity form-item-severity">
               <Select
                 key="select-severity"
-                onChange={this.severityFilterHandler}
+                onClick={this.severityFilterHandler}
                 label="Severity"
                 data={[
                   { value: '0', item: 'Emergency' },

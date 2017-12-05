@@ -8,16 +8,16 @@ export default class Select extends Component {
       value: string,
     })).isRequired,
     label: string,
-    onChange: func.isRequired,
+    onClick: func.isRequired,
   }
   static defaultProps = {
     label: '',
   }
-  constructor({ onChange }) {
+  constructor({ onClick }) {
     super();
     // @fixme State should be stored in this.state
     this.selected = new Set();
-    this.onChange = onChange;
+    this.onClick = onClick;
   }
   changeHandler = (e) => {
     if (this.selected.has(e.target.value)) {
@@ -26,7 +26,7 @@ export default class Select extends Component {
     else {
       this.selected.add(e.target.value);
     }
-    this.onChange(this.selected);
+    this.onClick(this.selected);
   }
   render() {
     const { label, data } = this.props;
