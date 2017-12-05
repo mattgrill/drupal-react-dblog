@@ -8,15 +8,15 @@ export default class Select extends Component {
       value: string,
     })).isRequired,
     label: string,
-    onChange: func.isRequired,
+    onClick: func.isRequired,
   }
   static defaultProps = {
     label: '',
   }
-  constructor({ onChange }) {
+  constructor({ onClick }) {
     super();
     // @fixme State should be stored in this.state
-    this.onChange = onChange;
+    this.onClick = onClick;
   }
   changeHandler = (e) => {
     const selected = new Set(
@@ -24,13 +24,13 @@ export default class Select extends Component {
         .filter(option => option.selected)
         .map(option => option.value)
     );
-    this.onChange(selected);
+    this.onClick(selected);
   }
   render() {
     const { label, data, selected } = this.props;
     return [
       label !== '' ? <label key={`select-label-${label}`} htmlFor={`select-${label}`}>{label}</label> : '',
-      <select key={`select-${label || 'select'}`} multiple size="7" onChange={this.changeHandler} value={Array.from(selected)}>
+      <select key={`select-${label || 'select'}`} multiple size="7" onClick={this.changeHandler} value={Array.from(selected)}>
         {data.map(({ value, item }) => (
           <option key={`${item}-${value}`} value={value}>{item}</option>
         ))}
